@@ -11,40 +11,37 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
         StringBuilder sb = new StringBuilder();
-        Set<Integer> set = new HashSet<>();
 
+        int set = 0;
         M = Integer.parseInt(br.readLine());
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
             String cmd = st.nextToken();
 
+
             switch (cmd) {
                 case "add":
                     num = Integer.parseInt(st.nextToken());
-                    set.add(num);
+                    set = set | (1 << num);
                     break;
                 case "remove":
                     num = Integer.parseInt(st.nextToken());
-                    set.remove(num);
+                    set = set & ~(1 << num);
                     break;
                 case "check":
                     num = Integer.parseInt(st.nextToken());
-                    sb.append(set.contains(num) ? 1 : 0).append('\n');
+                    sb.append(((set & (1 << num)) > 0) ? "1\n" : "0\n");
                     break;
                 case "toggle":
                     num = Integer.parseInt(st.nextToken());
-                    if(set.contains(num)) set.remove(num);
-                    else set.add(num);
+                    set = set ^ (1 << num);
                     break;
                 case "all":
-                    set = new HashSet<>();
-                    for (int j = 1; j <= 20; j++) {
-                        set.add(j);
-                    }
+                    set = (1 << 21 ) -1;
                     break;
                 case "empty":
-                    set.clear();
+                    set = 0;
                     break;
             }
         }
