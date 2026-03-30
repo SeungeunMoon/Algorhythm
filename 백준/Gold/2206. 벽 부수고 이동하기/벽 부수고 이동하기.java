@@ -32,7 +32,7 @@ public class Main {
 
         grid = new int[N][M];
         visited = new boolean[N][M][2];
-        for(int i=0;i<N;i++) {
+        for(int i=0 ;i<N;i++) {
             String line = br.readLine();
             for(int j=0; j<M;j++) {
                 grid[i][j] = line.charAt(j) - '0';
@@ -47,7 +47,7 @@ public class Main {
 
     static int bfs() {
         Queue<Point> q = new ArrayDeque<>();
-        q.add(new Point(0,0,1, 0));
+        q.add(new Point(0,0,1,0));
 
         while(!q.isEmpty()) {
             Point curr =  q.poll();
