@@ -35,15 +35,13 @@ class Solution {
             if(entry.getValue().reported >= k) blocked.add(entry.getKey());
         }
         
-        int idx=0;
         for(int i=0; i<id_list.length; i++) {
             User user = users.get(id_list[i]);
             for(String s: user.report) {
                 if(blocked.contains(s)) {
-                    answer[idx] = answer[idx]+1;
+                    answer[i] = answer[i]+1;
                 }
             }
-            idx++;
         }
 
         
